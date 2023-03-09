@@ -1,24 +1,22 @@
-import "./App.css";
-import { SwatchesPicker } from "react-color";
+import { hsvaToHex } from "@uiw/color-convert";
+import Swatch from "@uiw/react-color-swatch";
 import { useState } from "react";
+import "./App.css";
 
 function App() {
-	const [color, setColor] = useState("#fff");
-	const [show, setShow] = useState(false);
+	const [hex, setHex] = useState("#fff");
 	return (
-		<div className="App">
-			<button style={{ backgroundColor: color }} onClick={() => setShow(!show)}>
-				Show
-			</button>
-			{show && (
-				<SwatchesPicker
-					onChange={(color) => {
-						setColor(color.hex);
+		<div style={{ backgroundColor: hex }}>
+			<div style={{ backgroundColor: "white" }}>
+				<Swatch
+					colors={["#F44E3B", "#FE9200", "#FCDC00", "#DBDF00"]}
+					color={hex}
+					onChange={(hsvColor) => {
+						setHex(hsvaToHex(hsvColor));
 					}}
 				/>
-			)}
-			<br />
-			{color}
+			</div>
+			{hex}
 		</div>
 	);
 }
