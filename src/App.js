@@ -16,7 +16,7 @@ function App() {
 					}}
 				/>
 			</div>
-			{hex}
+			Color Code :{hex}
 		</div>
 	);
 }
